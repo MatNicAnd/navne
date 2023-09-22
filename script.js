@@ -1,23 +1,35 @@
-let listeStr =
-  "Richard Madsen 52, André Mackus 39, Maja Miskeri 22, Mathias Ulrich 28, Tobias Michaelsen 23, Philip Schiøler 23, Nicklas Pedersen 23, Per Pedersen 60";
-let listeArr = listeStr.split(", ");
-let deltagere = [];
-for (let i = 0; i < listeArr.length; i++) {
-  let temp = listeArr[i].split(" ");
-  deltagere.push({ forNavn: temp[0], efterNavn: temp[1], alder: temp[2] });
+const persons = [
+  { firstName: "Mathias", lastName: "Ulrich" },
+  { firstName: "John", lastName: "Doe" },
+  { firstName: "Jane", lastName: "Smith" },
+  { firstName: "Mathias", lastName: "Doe" },
+  { firstName: "Jane", lastName: "Doe" },
+  { firstName: "Mathias", lastName: "Smith" },
+  { firstName: "John", lastName: "Smith" },
+];
+
+document.getElementById("submit").addEventListener("click", function () {
+  const searchTerm = document.getElementById("search").value.toLowerCase();
+  const results = persons.filter((person) => {
+    const fullName = `${person.firstName.toLowerCase()} ${person.lastName.toLowerCase()}`;
+    const reverseFullName = `${person.lastName.toLowerCase()} ${person.firstName.toLowerCase()}`;
+    return (
+      fullName.includes(searchTerm) || reverseFullName.includes(searchTerm)
+    );
+  });
+
+  displayResults(results);
+});
+
+function displayResults(results) {
+  const resultsDiv = document.createElement("div");
+  results.sort((a, b) => a.lastName.localeCompare(b.lastName)); // Sort by last name
+  results.forEach((person) => {
+    const personDiv = document.createElement("div");
+    personDiv.textContent = `${person.firstName} ${person.lastName}`;
+    resultsDiv.appendChild(personDiv);
+  });
+
+  // Append results to the body or any other container
+  document.body.appendChild(resultsDiv);
 }
-console.log(deltagere);
-
-function sortDeltagereDescendingByName(a, b) {
-  // Compare the last names first
-  const lastNameComparison = b.efterNavn.localeCompare(a.efterNavn);
-
-  // If the last names are the same, compare the first names
-  if (lastNameComparison === 0) {
-    return b.forNavn.localeCompare(a.forNavn);
-  }
-
-  return lastNameComparison;
-}
-
-console.log(deltagere);
