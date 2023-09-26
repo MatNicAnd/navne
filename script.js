@@ -6,6 +6,18 @@ const persons = [
   { firstName: "Jane", lastName: "Doe", age: 34 },
   { firstName: "Mathias", lastName: "Smith", age: 29 },
   { firstName: "John", lastName: "Smith", age: 27 },
+  { firstName: "Lærke", lastName: "Mikkelsen", age: 19 },
+  { firstName: "Simon", lastName: "Svendborg", age: 45 },
+  { firstName: "Isabella", lastName: "Højbjerg", age: 18 },
+  { firstName: "Viktor", lastName: "Hedegaard", age: 55 },
+  { firstName: "Emilia", lastName: "Nordby", age: 7 },
+  { firstName: "Magnus", lastName: "Mortensen", age: 12 },
+  { firstName: "Amalie", lastName: "Thyregod", age: 36 },
+  { firstName: "Sebastian", lastName: "Egebjerg", age: 42 },
+  { firstName: "Clara", lastName: "Bramming", age: 3 },
+  { firstName: "Oscar", lastName: "Lysgaard", age: 9 },
+  { firstName: "Nora", lastName: "Bonde", age: 14 },
+  { firstName: "Noah", lastName: "Kjærsgaard", age: 37 },
 ];
 
 document.getElementById("submit").addEventListener("click", function () {
