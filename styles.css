@@ -1,0 +1,74 @@
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(45deg, #6c5b7b, #c06c84, #f67280);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1,
+h2 {
+  font-family: "Georgia", "Times New Roman", Times, serif;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.5em;
+  max-width: 800px;
+  text-align: justify;
+}
+
+input[type="text"],
+button {
+  padding: 10px 15px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"] {
+  width: 300px;
+  border: 2px solid #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1em;
+}
+
+input[type="text"]:focus {
+  border-color: #c06c84;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+button {
+  background: #c06c84;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+button:hover {
+  background: #f67280;
+}
+
+br {
+  margin-top: 20px;
+}
