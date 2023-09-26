@@ -9,12 +9,18 @@ const persons = [
 ];
 
 document.getElementById("submit").addEventListener("click", function () {
-  const searchTerm = document.getElementById("search").value.toLowerCase();
+  const trimmedSearch = document
+    .getElementById("search")
+    .value.replace(/[,:\s]+/g, " ")
+    .trim()
+    .toLowerCase();
   const results = persons.filter((person) => {
     const fullName = `${person.firstName.toLowerCase()} ${person.lastName.toLowerCase()}`;
     const reverseFullName = `${person.lastName.toLowerCase()} ${person.firstName.toLowerCase()}`;
+
     return (
-      fullName.includes(searchTerm) || reverseFullName.includes(searchTerm)
+      fullName.includes(trimmedSearch) ||
+      reverseFullName.includes(trimmedSearch)
     );
   });
 
