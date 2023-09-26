@@ -92,3 +92,9 @@ button:hover {
 br {
   margin-top: 20px;
 }
+
+input::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+  color: rgb(255, 255, 255);
+}

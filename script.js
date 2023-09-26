@@ -36,6 +36,8 @@ document.getElementById("submit").addEventListener("click", function () {
       ageMatch = person.age > searchAge;
     }
 
+    console.log(ageCondition, ageMatch, person.age, searchAge);
+
     return nameMatch && ageMatch;
   });
 
