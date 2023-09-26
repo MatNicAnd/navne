@@ -8,20 +8,20 @@
   </head>
   <body>
     <h1>Opgave 2: Personkartotek, løses i grupper og ved brug af Git</h1>
-    <h2>
-      Tag opgave 3 fra sidste JS-session (I kan formentlig også bruge elementer
-      fra den sidste opgave der). Udvid den med følgende funktionalitet: Der
-      skal kunne søges efter personer, og det skal være lige meget om man
-      skriver for- og/eller efternavnet på personen (eller personerne), og om
-      man skriver med store- eller småbogstaver. Hvis både efter- og fornavn
-      angives, skal deres indbyrdes rækkefølge være ligegyldigt. Dvs. alle disse
-      søgninger skal fx kunne finde Mathias Ulrich: mathias, ULRICH, Mathias,
-      ulrich Mathias, ULRich MaThIas, osv. Listen over søgeresultatet skal vises
-      på siden, ikke i konsol. Hvis flere personer svarer til søgekriterierne,
-      skal de listes i sorteret rækkefølge i forhold til efternavn. Diskuter
-      først hvilke JS-funktioner og HTML-elementer I skal implementere, så
-      fordel dem blandt jer, og til sidst merg jeres bidrag.
-    </h2>
+    <input type="number" id="age" placeholder="Search by age" />
+
+    <label
+      ><input type="radio" name="ageCondition" value="at" checked /> At the
+      age</label
+    >
+    <label
+      ><input type="radio" name="ageCondition" value="under" /> Under the
+      age</label
+    >
+    <label
+      ><input type="radio" name="ageCondition" value="over" /> Over the
+      age</label
+    >
     <br />
     <input type="text" placeholder="search" name="search" id="search" />
     <button id="submit">submit</button>
