@@ -20,59 +20,69 @@ const persons = [
   { firstName: "Noah", lastName: "Kjærsgaard", age: 37 },
 ];
 
-document.getElementById("submit").addEventListener("click", function () {
-  const trimmedSearch = document
-    .getElementById("search")
-    .value.replace(/[,:\s]+/g, " ")
-    .trim()
-    .toLowerCase();
-  const searchAge = parseInt(document.getElementById("age").value, 10);
-  const ageCondition = document.querySelector(
-    'input[name="ageCondition"]:checked'
-  ).value;
+// Event handler for name matching
+document.getElementById("submitName").addEventListener("click", function () {
+    const trimmedSearch = document
+        .getElementById("search")
+        .value.replace(/[,:\s]+/g, " ")
+        .trim()
+        .toLowerCase();
 
-  const results = persons.filter((person) => {
-    const fullName = `${person.firstName.toLowerCase()} ${person.lastName.toLowerCase()}`;
-    const reverseFullName = `${person.lastName.toLowerCase()} ${person.firstName.toLowerCase()}`;
+    const results = persons.filter((person) => {
+        const fullName = `${person.firstName.toLowerCase()} ${person.lastName.toLowerCase()}`;
+        const reverseFullName = `${person.lastName.toLowerCase()} ${person.firstName.toLowerCase()}`;
+        
+        let nameMatch = fullName.includes(trimmedSearch) || reverseFullName.includes(trimmedSearch);
+        
+        return nameMatch;
+    });
 
-    let nameMatch =
-      fullName.includes(trimmedSearch) ||
-      reverseFullName.includes(trimmedSearch);
-
-    let ageMatch;
-    if (ageCondition === "at") {
-      ageMatch = person.age === searchAge;
-    } else if (ageCondition === "under") {
-      ageMatch = person.age < searchAge;
-    } else if (ageCondition === "over") {
-      ageMatch = person.age > searchAge;
-    }
-
-    console.log(ageCondition, ageMatch, person.age, searchAge);
-
-    return ageMatch;
-  });
-
-  // when submit is pressed clear old results
-  const oldResults = document.querySelector("div");
-  if (oldResults) {
-    oldResults.remove();
-  }
-
-  displayResults(results, searchAge);
+    clearOldResults();
+    displayResults(results);
 });
 
-function displayResults(results, searchAge) {
-  const resultsDiv = document.createElement("div");
-  results.sort(
-    (a, b) => Math.abs(a.age - searchAge) - Math.abs(b.age - searchAge)
-  ); // Sort by difference in age
-  results.forEach((person) => {
-    const personDiv = document.createElement("div");
-    personDiv.textContent = `${person.firstName} ${person.lastName} - Age: ${person.age}`;
-    resultsDiv.appendChild(personDiv);
-  });
+// Event handler for age matching
+document.getElementById("submitAge").addEventListener("click", function () {
+    const searchAge = parseInt(document.getElementById("age").value, 10);
+    const ageCondition = document.querySelector(
+        'input[name="ageCondition"]:checked'
+    ).value;
 
-  // Append results to the body or any other container
-  document.body.appendChild(resultsDiv);
+    const results = persons.filter((person) => {
+        let ageMatch;
+        if (ageCondition === "at") {
+            ageMatch = person.age === searchAge;
+        } else if (ageCondition === "under") {
+            ageMatch = person.age < searchAge;
+        } else if (ageCondition === "over") {
+            ageMatch = person.age > searchAge;
+        }
+        
+        console.log(ageCondition, ageMatch, person.age, searchAge);
+        
+        return ageMatch;
+    });
+
+    clearOldResults();
+    displayResults(results);
+});
+
+function clearOldResults() {
+    // when submit is pressed clear old results
+    const oldResults = document.querySelector("div");
+    if (oldResults) {
+        oldResults.remove();
+    }
+}
+
+function displayResults(results) {
+    const resultsDiv = document.createElement("div");
+    results.forEach((person) => {
+        const personDiv = document.createElement("div");
+        personDiv.textContent = `${person.firstName} ${person.lastName} - Age: ${person.age}`;
+        resultsDiv.appendChild(personDiv);
+    });
+
+    // Append results to the body or any other container
+    document.body.appendChild(resultsDiv);
 }
