@@ -39,6 +39,12 @@ document.getElementById("submit").addEventListener("click", function () {
     return nameMatch && ageMatch;
   });
 
+  // when submit is pressed clear old results
+  const oldResults = document.querySelector("div");
+  if (oldResults) {
+    oldResults.remove();
+  }
+
   displayResults(results, searchAge);
 });
 
@@ -52,10 +58,7 @@ function displayResults(results, searchAge) {
     personDiv.textContent = `${person.firstName} ${person.lastName} - Age: ${person.age}`;
     resultsDiv.appendChild(personDiv);
   });
-  // on new submit, remove old results
-  if (document.getElementById("results")) {
-    document.getElementById("results").remove();
-  }
+
   // Append results to the body or any other container
   document.body.appendChild(resultsDiv);
 }
