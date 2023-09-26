@@ -50,7 +50,7 @@ document.getElementById("submit").addEventListener("click", function () {
 
     console.log(ageCondition, ageMatch, person.age, searchAge);
 
-    return nameMatch && ageMatch;
+    return nameMatch || ageMatch;
   });
 
   // when submit is pressed clear old results
