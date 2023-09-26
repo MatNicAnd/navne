@@ -39,7 +39,7 @@ document.getElementById("submit").addEventListener("click", function () {
       fullName.includes(trimmedSearch) ||
       reverseFullName.includes(trimmedSearch);
 
-    let ageMatch = false;
+    let ageMatch;
     if (ageCondition === "at") {
       ageMatch = person.age === searchAge;
     } else if (ageCondition === "under") {
